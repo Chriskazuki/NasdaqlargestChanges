@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Worst Nasdaq Crashes</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f0f0f0; }
+        .container { max-width: 900px; margin: auto; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { margin-top: 0; color: #333; }
+        h2 { color: #666; font-weight: normal; margin-top: 0; }
+        .source { font-size: 0.8em; color: #888; margin-top: 20px; }
+        #chartContainer { height: 400px; }
+        .chart-label { text-align: right; padding-right: 10px; }
+        .chart-date { font-weight: bold; color: #333; }
+        .chart-event { font-weight: normal; color: #666; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>The Worst Nasdaq Crashes</h1>
+        <h2>Largest single-day percentage losses of the Nasdaq Composite since 1987</h2>
+        <div id="chartContainer">
+            <canvas id="myChart"></canvas>
+        </div>
+        <p class="source">Source: Wikipedia</p>
+    </div>
+
+    <script>
+ const data = [
+    { date: 'Mar 16, 2020', loss: 12.32, event: 'Circuit breaker triggered amid coronavirus outbreak' },
+    { date: 'Oct 19, 1987', loss: 11.35, event: 'Black Monday stock market crash' },
+    { date: '14 Apr, 2000', loss: 9.67, event: 'Dotcom bubble burst' },
+    { date: '12 Mar, 2020', loss: 9.43, event: 'Coronavirus pandemic fears' },
+    { date: '29 Sep, 2008', loss: 9.14, event: 'House rejects bank bailout bill amid financial crisis' }
+];
+
+function formatDate(dateString) {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
+}
+
+const ctx = document.getElementById('myChart').getContext('2d');
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: data.map(item => formatDate(item.date)),
+        datasets: [{
+            label: 'Percentage Loss',
+            data: data.map(item => item.loss),
+            backgroundColor: 'rgba(220, 53, 69, 0.8)',
+            borderColor: 'rgba(220, 53, 69, 1)',
+            borderWidth: 1
+        }]
+    },
+    options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            legend: {
+                display: false
+            },
+            tooltip: {
+                enabled: false
+            }
+        },
+        scales: {
+            x: {
+                beginAtZero: true,
+                title: {
+                    display: true,
+                    text: 'Percentage Loss'
+                },
+                ticks: {
+                    callback: function(value) {
+                        return value + '%';
+                    }
+                }
+            },
+            y: {
+                ticks: {
+                    display: false  // Cache les labels par défaut
+                }
+            }
+        },
+        layout: {
+            padding: {
+                left: 200  // Ajoute de l'espace à gauche pour nos labels personnalisés
+            }
+        }
+    },
+    plugins: [{
+        id: 'customLabels',
+        afterDraw: (chart) => {
+            const ctx = chart.ctx;
+            const yAxis = chart.scales.y;
+            const chartArea = chart.chartArea;
+
+            chart.data.labels.forEach((label, index) => {
+                const y = yAxis.getPixelForTick(index);
+
+                // Date (en gras)
+                ctx.save();
+                ctx.font = 'bold 12px Arial';
+                ctx.fillStyle = '#333';
+                ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(label, chartArea.left - 10, y);
+                ctx.restore();
+
+                // Événement (normal)
+                ctx.save();
+                ctx.font = '12px Arial';
+                ctx.fillStyle = '#666';
+                ctx.textAlign = 'right';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(data[index].event, chartArea.left - 10, y + 20);
+                ctx.restore();
+            });
+        }
+    }]
+});
+    </script>
+</body>
+</html>
