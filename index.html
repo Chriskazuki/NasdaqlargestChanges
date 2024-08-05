@@ -43,12 +43,12 @@
         #photo-container {
             position: absolute;
             top: 10px;
-            right: 25px;
+            right: -5px;
             z-index: 1000;
         }
         #photo-container img {
-            width: 78px;
-            height: 78px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
         }
     </style>
@@ -168,7 +168,7 @@
 
                     // Event
                     ctx.save();
-                    ctx.font = '9px Arial';
+                    ctx.font = '9.5px Arial';
                     ctx.fillStyle = '#666';
                     ctx.textAlign = 'right';
                     ctx.textBaseline = 'middle';
@@ -180,11 +180,11 @@
 
                     // Percentage
                     ctx.save();
-                    ctx.font = 'bold 8px Arial';
+                    ctx.font = 'bold 9px Arial';
                     ctx.fillStyle = '#333';
                     ctx.textAlign = 'left';
                     ctx.textBaseline = 'middle';
-                    ctx.fillText(data[index].loss.toFixed(2) + '%', x + 2, y);
+                    ctx.fillText(data[index].loss.toFixed(2) + '%', x + 3, y);
                     ctx.restore();
                 });
             }
