@@ -1,0 +1,286 @@
+{
+  "largest_gains": [
+    {
+      "rank": "1",
+      "date": "2001-01-03",
+      "close": "2,616.69",
+      "net_change": "+324.83",
+      "percent_change": "+14.17"
+    },
+    {
+      "rank": "2",
+      "date": "2008-10-13",
+      "close": "1,844.25",
+      "net_change": "+194.74",
+      "percent_change": "+11.81"
+    },
+    {
+      "rank": "3",
+      "date": "2000-12-05",
+      "close": "2,889.80",
+      "net_change": "+274.05",
+      "percent_change": "+10.48"
+    },
+    {
+      "rank": "4",
+      "date": "2008-10-28",
+      "close": "1,649.47",
+      "net_change": "+143.57",
+      "percent_change": "+9.53"
+    },
+    {
+      "rank": "5",
+      "date": "2020-03-13",
+      "close": "7,874.88",
+      "net_change": "+673.07",
+      "percent_change": "+9.35"
+    },
+    {
+      "rank": "6",
+      "date": "2001-04-05",
+      "close": "1,785.00",
+      "net_change": "+146.20",
+      "percent_change": "+8.92"
+    },
+    {
+      "rank": "7 (tie)",
+      "date": "2001-04-18",
+      "close": "2,079.44",
+      "net_change": "+156.22",
+      "percent_change": "+8.12"
+    },
+    {
+      "rank": "7 (tie)",
+      "date": "2020-03-24",
+      "close": "7,417.86",
+      "net_change": "+557.18",
+      "percent_change": "+8.12"
+    },
+    {
+      "rank": "9",
+      "date": "2000-05-30",
+      "close": "3,459.48",
+      "net_change": "+254.37",
+      "percent_change": "+7.94"
+    },
+    {
+      "rank": "10",
+      "date": "2000-10-13",
+      "close": "3,316.77",
+      "net_change": "+242.09",
+      "percent_change": "+7.87"
+    },
+    {
+      "rank": "11",
+      "date": "2000-10-19",
+      "close": "3,418.60",
+      "net_change": "+247.04",
+      "percent_change": "+7.79"
+    },
+    {
+      "rank": "12",
+      "date": "2002-05-08",
+      "close": "1,696.29",
+      "net_change": "+122.47",
+      "percent_change": "+7.78"
+    },
+    {
+      "rank": "13",
+      "date": "2000-12-22",
+      "close": "2,517.02",
+      "net_change": "+176.90",
+      "percent_change": "+7.56"
+    },
+    {
+      "rank": "14 (tie)",
+      "date": "2022-11-10",
+      "close": "11,114.15",
+      "net_change": "+760.97",
+      "percent_change": "+7.35"
+    },
+    {
+      "rank": "14 (tie)",
+      "date": "1987-10-21",
+      "close": "351.90",
+      "net_change": "+24.10",
+      "percent_change": "+7.35"
+    },
+    {
+      "rank": "16",
+      "date": "2020-04-06",
+      "close": "7,913.24",
+      "net_change": "+540.15",
+      "percent_change": "+7.33"
+    },
+    {
+      "rank": "17",
+      "date": "2000-04-18",
+      "close": "3,793.57",
+      "net_change": "+254.41",
+      "percent_change": "+7.19"
+    },
+    {
+      "rank": "18",
+      "date": "2009-03-10",
+      "close": "1,358.28",
+      "net_change": "+89.64",
+      "percent_change": "+7.07"
+    },
+    {
+      "rank": "19",
+      "date": "2009-03-23",
+      "close": "1,555.77",
+      "net_change": "+98.50",
+      "percent_change": "+6.76"
+    },
+    {
+      "rank": "20",
+      "date": "2000-04-25",
+      "close": "3,711.23",
+      "net_change": "+228.75",
+      "percent_change": "+6.57"
+    }
+  ],
+  "largest_losses": [
+    {
+      "rank": "1",
+      "date": "2020-03-16",
+      "close": "6,904.59",
+      "net_change": "-970.28",
+      "percent_change": "-12.32"
+    },
+    {
+      "rank": "2",
+      "date": "1987-10-19",
+      "close": "360.20",
+      "net_change": "-46.10",
+      "percent_change": "-11.35"
+    },
+    {
+      "rank": "3",
+      "date": "2000-04-14",
+      "close": "3,321.29",
+      "net_change": "-355.49",
+      "percent_change": "-9.67"
+    },
+    {
+      "rank": "4",
+      "date": "2020-03-12",
+      "close": "7,201.80",
+      "net_change": "-750.25",
+      "percent_change": "-9.43"
+    },
+    {
+      "rank": "5",
+      "date": "2008-09-29",
+      "close": "1,983.73",
+      "net_change": "-199.61",
+      "percent_change": "-9.14"
+    },
+    {
+      "rank": "6",
+      "date": "1987-10-26",
+      "close": "298.90",
+      "net_change": "-29.60",
+      "percent_change": "-9.01"
+    },
+    {
+      "rank": "7",
+      "date": "1987-10-20",
+      "close": "327.80",
+      "net_change": "-32.40",
+      "percent_change": "-9.00"
+    },
+    {
+      "rank": "8",
+      "date": "2008-12-01",
+      "close": "1,398.07",
+      "net_change": "-137.50",
+      "percent_change": "-8.95"
+    },
+    {
+      "rank": "9",
+      "date": "1998-08-31",
+      "close": "1,499.25",
+      "net_change": "-140.43",
+      "percent_change": "-8.56"
+    },
+    {
+      "rank": "10",
+      "date": "2008-10-15",
+      "close": "1,628.33",
+      "net_change": "-150.68",
+      "percent_change": "-8.47"
+    },
+    {
+      "rank": "11",
+      "date": "2000-04-03",
+      "close": "4,223.68",
+      "net_change": "-349.15",
+      "percent_change": "-7.64"
+    },
+    {
+      "rank": "12",
+      "date": "2020-03-09",
+      "close": "7,950.68",
+      "net_change": "-624.94",
+      "percent_change": "-7.29"
+    },
+    {
+      "rank": "13",
+      "date": "2001-01-02",
+      "close": "2,291.86",
+      "net_change": "-178.66",
+      "percent_change": "-7.23"
+    },
+    {
+      "rank": "14",
+      "date": "2000-12-20",
+      "close": "2,332.78",
+      "net_change": "-178.93",
+      "percent_change": "-7.12"
+    },
+    {
+      "rank": "15",
+      "date": "2000-04-12",
+      "close": "3,769.63",
+      "net_change": "-286.27",
+      "percent_change": "-7.06"
+    },
+    {
+      "rank": "16",
+      "date": "1997-10-27",
+      "close": "1,535.09",
+      "net_change": "-115.83",
+      "percent_change": "-7.02"
+    },
+    {
+      "rank": "17",
+      "date": "2011-08-08",
+      "close": "2,357.69",
+      "net_change": "-174.72",
+      "percent_change": "-6.90"
+    },
+    {
+      "rank": "18",
+      "date": "2001-09-17",
+      "close": "1,579.55",
+      "net_change": "-115.83",
+      "percent_change": "-6.83"
+    },
+    {
+      "rank": "19",
+      "date": "2008-11-19",
+      "close": "1,386.42",
+      "net_change": "-96.85",
+      "percent_change": "-6.53"
+    },
+    {
+      "rank": "20",
+      "date": "2001-03-12",
+      "close": "1,923.38",
+      "net_change": "-129.40",
+      "percent_change": "-6.30"
+    }
+  ]
+}
