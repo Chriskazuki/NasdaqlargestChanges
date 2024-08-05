@@ -2,28 +2,64 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>The Worst Nasdaq Crashes</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background-color: #f0f0f0; }
-        .container { max-width: 900px; margin: auto; background-color: white; padding: 20px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1 { margin-top: 0; color: #333; }
-        h2 { color: #666; font-weight: normal; margin-top: 0; }
-        .source { font-size: 0.8em; color: #888; margin-top: 20px; }
-        #chartContainer { height: 400px; }
-        .chart-label { text-align: right; padding-right: 10px; }
-        .chart-date { font-weight: bold; color: #333; }
-        .chart-event { font-weight: normal; color: #666; }
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 10px; 
+            background-color: #f0f0f0; 
+        }
+        .container { 
+            width: 100%; 
+            max-width: 430px; 
+            margin: auto; 
+            background-color: white; 
+            padding: 15px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            margin-top: 0; 
+            color: #333; 
+            font-size: 20px; 
+        }
+        h2 { 
+            color: #666; 
+            font-weight: normal; 
+            margin-top: 0; 
+            font-size: 16px; 
+        }
+        .source { 
+            font-size: 0.7em; 
+            color: #888; 
+            margin-top: 10px; 
+        }
+        #chartContainer { 
+            height: 300px; 
+            margin-top: 20px; 
+        }
+        #photo-container {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        #photo-container img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div id="photo-container" style="position: absolute; top: 22px; right: 250px; z-index: 1000;">
-            <img src="FR0003-006-modified.png" alt="Votre photo" style="width: 100px; height: 100px; border-radius: 50%;">
-          </div>
+        <div id="photo-container">
+            <img src="FR0003-006-modified.png" alt="Votre photo">
+        </div>
         <h1>The Worst Nasdaq Crashes</h1>
-        <h2>Largest single-day percentage losses of the Nasdaq Composite since 1987</h2>
+        <h2>Largest single-day percentage losses since 1987</h2>
         <div id="chartContainer">
             <canvas id="myChart"></canvas>
         </div>
@@ -31,131 +67,129 @@
     </div>
 
     <script>
- const data = [
-    { date: 'Mar 16, 2020', loss: 12.32, event: 'Circuit breaker triggered amid coronavirus outbreak' },
-    { date: 'Oct 19, 1987', loss: 11.35, event: 'Black Monday stock market crash' },
-    { date: '14 Apr, 2000', loss: 9.67, event: 'Dotcom bubble burst' },
-    { date: '12 Mar, 2020', loss: 9.43, event: 'Coronavirus pandemic fears' },
-    { date: '29 Sep, 2008', loss: 9.14, event: 'House rejects bank bailout bill amid financial crisis' }
-];
+    const data = [
+        { date: 'Mar 16, 2020', loss: 12.32, event: 'Circuit breaker triggered' },
+        { date: 'Oct 19, 1987', loss: 11.35, event: 'Black Monday crash' },
+        { date: '14 Apr, 2000', loss: 9.67, event: 'Dotcom bubble burst' },
+        { date: '12 Mar, 2020', loss: 9.43, event: 'Coronavirus fears' },
+        { date: '29 Sep, 2008', loss: 9.14, event: 'Bank bailout bill rejected' }
+    ];
 
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'long', day: 'numeric' }).format(date);
-}
-
-function wrapText(context, text, maxWidth) {
-    const words = text.split(' ');
-    const lines = [];
-    let currentLine = words[0];
-
-    for (let i = 1; i < words.length; i++) {
-        const word = words[i];
-        const width = context.measureText(currentLine + " " + word).width;
-        if (width < maxWidth) {
-            currentLine += " " + word;
-        } else {
-            lines.push(currentLine);
-            currentLine = word;
-        }
+    function formatDate(dateString) {
+        const date = new Date(dateString);
+        return new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: 'numeric' }).format(date);
     }
-    lines.push(currentLine);
-    return lines;
-}
 
-const ctx = document.getElementById('myChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: data.map(item => formatDate(item.date)),
-        datasets: [{
-            label: 'Percentage Loss',
-            data: data.map(item => item.loss),
-            backgroundColor: 'rgba(220, 53, 69, 0.8)',
-            borderColor: 'rgba(220, 53, 69, 1)',
-            borderWidth: 1
-        }]
-    },
-    options: {
-        indexAxis: 'y',
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false },
-            tooltip: { enabled: false }
+    function wrapText(context, text, maxWidth) {
+        const words = text.split(' ');
+        const lines = [];
+        let currentLine = words[0];
+
+        for (let i = 1; i < words.length; i++) {
+            const word = words[i];
+            const width = context.measureText(currentLine + " " + word).width;
+            if (width < maxWidth) {
+                currentLine += " " + word;
+            } else {
+                lines.push(currentLine);
+                currentLine = word;
+            }
+        }
+        lines.push(currentLine);
+        return lines;
+    }
+
+    const ctx = document.getElementById('myChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: data.map(item => formatDate(item.date)),
+            datasets: [{
+                label: 'Percentage Loss',
+                data: data.map(item => item.loss),
+                backgroundColor: 'rgba(220, 53, 69, 0.8)',
+                borderColor: 'rgba(220, 53, 69, 1)',
+                borderWidth: 1
+            }]
         },
-        scales: {
-            x: {
-                beginAtZero: true,
-                title: {
-                    display: true,
-                    text: 'Percentage Loss'
-                },
-                ticks: {
-                    callback: function(value) {
-                        return value + '%';
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: { display: false },
+                tooltip: { enabled: false }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Percentage Loss',
+                        font: { size: 10 }
+                    },
+                    ticks: {
+                        callback: function(value) { return value + '%'; },
+                        font: { size: 8 }
                     }
+                },
+                y: {
+                    ticks: { display: false }
                 }
             },
-            y: {
-                ticks: { display: false }
+            layout: {
+                padding: { left: 100, right: 30 }
+            },
+            animation: {
+                duration: 5000,
+                easing: 'easeOutCirc',
+                delay: (context) => context.dataIndex * 700
             }
         },
-        layout: {
-            padding: { left: 250, right: 50 }
-        },
-        animation: {
-            duration: 5000,  // Durée totale de l'animation en millisecondes
-            easing: 'easeOutCirc',  // Type d'animation
-            delay: (context) => {
-                return context.dataIndex * 700;  // Délai progressif pour chaque barre
-            }
-        }
-    },
-    plugins: [{
-        id: 'customLabels',
-        afterDraw: (chart) => {
-            const ctx = chart.ctx;
-            const chartArea = chart.chartArea;
-            const maxWidth = 230;
+        plugins: [{
+            id: 'customLabels',
+            afterDraw: (chart) => {
+                const ctx = chart.ctx;
+                const chartArea = chart.chartArea;
+                const maxWidth = 90;
 
-            chart.getDatasetMeta(0).data.forEach((datapoint, index) => {
-                const y = datapoint.y;
-                const x = datapoint.x;
+                chart.getDatasetMeta(0).data.forEach((datapoint, index) => {
+                    const y = datapoint.y;
+                    const x = datapoint.x;
 
-                // Date (en gras)
-                ctx.save();
-                ctx.font = 'bold 12px Arial';
-                ctx.fillStyle = '#333';
-                ctx.textAlign = 'right';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(chart.data.labels[index], chartArea.left - 10, y - 10);
-                ctx.restore();
+                    // Date
+                    ctx.save();
+                    ctx.font = 'bold 8px Arial';
+                    ctx.fillStyle = '#333';
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(chart.data.labels[index], chartArea.left - 5, y - 5);
+                    ctx.restore();
 
-                // Événement (normal, avec retour à la ligne)
-                ctx.save();
-                ctx.font = '12px Arial';
-                ctx.fillStyle = '#666';
-                ctx.textAlign = 'right';
-                ctx.textBaseline = 'middle';
-                const eventLines = wrapText(ctx, data[index].event, maxWidth);
-                eventLines.forEach((line, lineIndex) => {
-                    ctx.fillText(line, chartArea.left - 10, y + 7 + (lineIndex * 18));
+                    // Event
+                    ctx.save();
+                    ctx.font = '8px Arial';
+                    ctx.fillStyle = '#666';
+                    ctx.textAlign = 'right';
+                    ctx.textBaseline = 'middle';
+                    const eventLines = wrapText(ctx, data[index].event, maxWidth);
+                    eventLines.forEach((line, lineIndex) => {
+                        ctx.fillText(line, chartArea.left - 5, y + 5 + (lineIndex * 10));
+                    });
+                    ctx.restore();
+
+                    // Percentage
+                    ctx.save();
+                    ctx.font = 'bold 8px Arial';
+                    ctx.fillStyle = '#333';
+                    ctx.textAlign = 'left';
+                    ctx.textBaseline = 'middle';
+                    ctx.fillText(data[index].loss.toFixed(2) + '%', x + 2, y);
+                    ctx.restore();
                 });
-                ctx.restore();
-
-                // Valeur de pourcentage (en gras, à la fin de la barre)
-                ctx.save();
-                ctx.font = 'bold 12px Arial';
-                ctx.fillStyle = '#333';
-                ctx.textAlign = 'left';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(data[index].loss.toFixed(2) + '%', x + 5, y);
-                ctx.restore();
-            });
-        }
-    }]
-});
+            }
+        }]
+    });
     </script>
 </body>
 </html>
